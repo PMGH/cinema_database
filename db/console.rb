@@ -2,6 +2,7 @@ require('pry-byebug')
 require_relative('../models/customer')
 require_relative('../models/film')
 require_relative('../models/ticket')
+require_relative('../models/screening')
 
 Ticket.delete_all()
 Customer.delete_all()
@@ -105,3 +106,72 @@ ticket1.save()
 ticket2.save()
 ticket3.save()
 ticket4.save()
+
+
+# create screenings
+
+screening1 = Screening.new({
+  'film_id' => film1.id,
+  'showing' => '19:00',
+  'capacity' => 80,
+  'available' => 80
+  }
+)
+
+screening2 = Screening.new({
+  'film_id' => film1.id,
+  'showing' => '21:00',
+  'capacity' => 80,
+  'available' => 80
+  }
+)
+
+screening3 = Screening.new({
+  'film_id' => film1.id,
+  'showing' => '00:00',
+  'capacity' => 80,
+  'available' => 80
+  }
+)
+
+screening4 = Screening.new({
+  'film_id' => film2.id,
+  'showing' => '19:00',
+  'capacity' => 60,
+  'available' => 60
+  }
+)
+
+screening5 = Screening.new({
+  'film_id' => film3.id,
+  'showing' => '20:00',
+  'capacity' => 50,
+  'available' => 50
+  }
+)
+
+screening6 = Screening.new({
+  'film_id' => film4.id,
+  'showing' => '20:00',
+  'capacity' => 50,
+  'available' => 50
+  }
+)
+
+screening7 = Screening.new({
+  'film_id' => film4.id,
+  'showing' => '20:00',
+  'capacity' => 50,
+  'available' => 60
+  }
+)
+
+screening1.save()
+screening2.save()
+screening3.save()
+screening4.save()
+screening5.save()
+screening6.save()
+
+binding.pry
+nil
