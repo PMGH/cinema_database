@@ -80,6 +80,20 @@ class Customer
     return results.map {|film| Film.new(film)}
   end
 
+  # count customer tickets
+  def number_tickets()
+    booked_films().count()
+    # alternative sql:
+    # # sql
+    # sql = "SELECT COUNT(films.id) FROM films INNER JOIN tickets ON films.id = tickets.film_id WHERE customer_id = $1;"
+    # # values
+    # values = [@id]
+    # # results
+    # results = SqlRunner.run(sql, "get_number_tickets", values)
+    # # return
+    # return results[0]['count'].to_i
+  end
+
   # buy ticket
   def buy_ticket(film_id)
     # sql
@@ -89,7 +103,7 @@ class Customer
     #sql runner
     results = SqlRunner.run(sql, "get_film_price", values)
     # set film price equal to associated value of price key from first returned hash (only one hash should be returned as film 'id' is unique)
-    film_price = results[0][:price].to_i
+    film_price = results[0]['price'].to_i
     # decrement customer funds by film price
     @funds -= film_price
     update()
