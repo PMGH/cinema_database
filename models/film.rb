@@ -80,4 +80,18 @@ class Film
     return results.map {|customer| Customer.new(customer)}
   end
 
+  # get the number of customers who have tickets for a specific film
+  def number_customers()
+    customers().count()
+    # alternative sql:
+    # # sql
+    # sql = "SELECT COUNT(customers.id) FROM customers INNER JOIN tickets ON customers.id = tickets.customer_id WHERE film_id = $1;"
+    # # values
+    # values = [@id]
+    # # sql runner
+    # results = SqlRunner.run(sql, "get_number_customers", values)
+    # # return
+    # return results[0]['count'].to_i
+  end
+
 end
