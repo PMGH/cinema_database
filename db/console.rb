@@ -162,7 +162,7 @@ screening7 = Screening.new({
   'film_id' => film4.id,
   'showing' => '20:00',
   'capacity' => 50,
-  'available' => 60
+  'available' => 60  # defaults to 50 as per constraint (CHECK) in cinema.sql
   }
 )
 
