@@ -94,4 +94,16 @@ class Film
     # return results[0]['count'].to_i
   end
 
+  # get film screenings
+  def screenings()
+    # sql
+    sql = "SELECT screenings.* FROM screenings INNER JOIN films ON screenings.film_id = films.id WHERE film_id = $1;"
+    # values
+    values = [@id]
+    # sql runner
+    results = SqlRunner.run(sql, "get_all_showings", values)
+    # return
+    return results.map {|screening| Screening.new(screening)}
+  end
+
 end
