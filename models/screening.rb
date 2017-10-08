@@ -66,16 +66,16 @@ class Screening
     SqlRunner.run(sql, "delete_screening", values)
   end
 
-  # most popular
-  def fullest()
-    # sql
-    sql = "SELECT MAX()"
-    # values
-    values = []
-    # sql runner
-    results = SqlRunner.run(sql, "get_fullest_screening", values)
-    # return
-    return results.map {|screening| Screening.new(screening)}
-  end
+  # # most popular
+  # def fullest()
+  #   # sql
+  #   sql = "SELECT MAX()"
+  #   # values
+  #   values = []
+  #   # sql runner
+  #   results = SqlRunner.run(sql, "get_fullest_screening", values)
+  #   # return
+  #   return results.map {|screening| Screening.new(screening)}
+  # end
 
 end
