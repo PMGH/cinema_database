@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('../models/ticket')
 
 
 class Customer
@@ -95,18 +96,16 @@ class Customer
   end
 
   # buy ticket
-  def buy_ticket(film_id)
-    # sql
-    sql = "SELECT films.price FROM films WHERE id = $1;"
-    # values
-    values = [film_id]
-    #sql runner
-    results = SqlRunner.run(sql, "get_film_price", values)
-    # set film price equal to associated value of price key from first returned hash (only one hash should be returned as film 'id' is unique)
-    film_price = results[0]['price'].to_i
-    # decrement customer funds by film price
-    @funds -= film_price
+  def buy_ticket(film)
+    @funds -= film.price()
     update()
+    ticket = Ticket.new(
+      {
+        'customer_id' => @id,
+        'film_id' => film.id
+      }
+    )
+    ticket.save()
   end
 
 end

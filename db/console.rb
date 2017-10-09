@@ -71,7 +71,7 @@ ticket1 = Ticket.new(
 )
 
 # pay for ticket (and update db)
-customer1.buy_ticket(film1.id)
+customer1.buy_ticket(film1)
 
 ticket2 = Ticket.new(
   {
@@ -80,7 +80,7 @@ ticket2 = Ticket.new(
   }
 )
 
-customer2.buy_ticket(film2.id)
+customer2.buy_ticket(film2)
 
 
 ticket3 = Ticket.new(
@@ -90,7 +90,7 @@ ticket3 = Ticket.new(
   }
 )
 
-customer2.buy_ticket(film3.id)
+customer2.buy_ticket(film3)
 
 ticket4 = Ticket.new(
   {
@@ -99,13 +99,7 @@ ticket4 = Ticket.new(
   }
 )
 
-customer1.buy_ticket(film2.id)
-
-
-ticket1.save()
-ticket2.save()
-ticket3.save()
-ticket4.save()
+customer1.buy_ticket(film2)
 
 
 # create screenings
